@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav {
+    padding: 1em;
+    margin: 0;
+   }
+ 
