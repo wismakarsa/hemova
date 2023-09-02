@@ -1,7 +1,5 @@
 <script>
     // your script goes here
-    import { page } from '$app/stores'
-    const name = $page.url.searchParams.get('email')
 
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -40,7 +38,7 @@
 <div class="welcome">
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
-<h1 class="welcome title text-3xl font-bold">Welcome Bunda {capitalize(name)}
+<h1 class="welcome title text-3xl font-bold">Welcome Bunda 
 </h1>
         </div>
     </div>
@@ -48,10 +46,12 @@
 
 <div class="bmi-calculator m-5">
     <h1 class="text-xl">BMI Calculator</h1>
+    <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="label">
         <span class="label-text">Berat Badan</span>
       </label>
     <input bind:value={beratBadan} id="berat-badan" type="number" min="1" placeholder="Berat Badan (kg)" class="input input-bordered w-full max-w-xs" />
+    <!-- svelte-ignore a11y-label-has-associated-control -->
     <label class="label">
         <span class="label-text">Tinggi Badan</span>
       </label>

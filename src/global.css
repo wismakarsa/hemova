@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .btn{
+      text-transform: none;
+    }
+  }
+
 .nav {
     padding: 1em;
     margin: 0;

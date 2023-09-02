@@ -47,6 +47,8 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"chart.js": "^4.4.0"
+		"chart.js": "^4.4.0",
+		"iconify-icon": "^1.0.8",
+		"pocketbase": "^0.18.0-rc2"
 	}
 }

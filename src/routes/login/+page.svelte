@@ -1,33 +1,48 @@
 <script>
-    let email;
-    let pass;
-
-    $: value = email
+    export let form
 </script>
 
 
-<div class="relative flex flex-col justify-center h-screen overflow-hidden">
-    <div class="w-1/2 p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-lg">
-        <h1 class="text-3xl font-semibold text-center text-gray-700">Login</h1>
-        <form class="space-y-4">
-            <div>
-                <label class="label">
-                    <span class="text-base label-text">Email</span>
-                </label>
-                <input type="text" placeholder="Email Address" bind:value={email} class="w-full input input-bordered" />
-            </div>
-            <div>
-                <label class="label">
-                    <span class="text-base label-text">Password</span>
-                </label>
-                <input type="password" placeholder="Enter Password"
-                    class="w-full input input-bordered" />
-            </div>
-            <a on:click={(e) => (alert('belum bisa nggih'))} class="block text-xs text-gray-600 cursor-pointer hover:underline hover:text-blue-600">Lupa Password?</a>
-            <a href="/register" class="text-xs text-gray-600 hover:underline hover:text-blue-600">Belum buat akun?</a>
-            <div>
-                <a class="btn btn-block" href="/home?email={email}">Login</a>
-            </div>
-        </form>
-    </div>
+<div class="flex flex-col items-center h-full w-full text-center">
+	<h2 class="mt-2 text-3xl font-bold tracking-tight text-base-content">
+		Masuk ke akun
+	</h2>
+    <p class="text-center mt-1">
+		atau <a href="/register" class="text-primary font-medium hover:cursor-pointer hover:underline"
+			>Daftar</a
+		> jika belum memiliki akun.
+	</p>
+	<form action="?/login" method="POST" class="flex flex-col items-center space-y-2 w-full pt-4 px-6">
+        <div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
+			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary"><iconify-icon icon="bi:google"></iconify-icon>Masuk dengan Google</button>
+		</div>
+        <div class="divider max-w-sm sm:max-w-md w-full self-auto">atau</div>
+		<div class="form-control w-full max-w-sm sm:max-w-md">
+			<label for="email" class="label font-medium pb-1">
+				<span class="label-text">Email</span>
+			</label>
+			<input type="email" name="email" class="input input-bordered w-full max-w-sm sm:max-w-md" />
+		</div>
+		<div class="form-control w-full max-w-sm sm:max-w-md">
+			<label for="password" class="label font-medium pb-1">
+				<span class="label-text">Password</span>
+			</label>
+			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" />
+		</div>
+        <div class="w-full max-w-md text-start">
+            <a href="/reset password" class="font-medium text-left text-primary hover:cursor-pointer hover:underline">Lupa Password?</a>
+        </div>
+		<div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
+			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary">Login</button>
+		</div>
+        {#if form?.notVerified}
+        <div class="alert alert-error max-w-sm sm:max-w-md">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>Kamu harus verifikasi email dulu sebelum login ya..</span>
+          </div>
+        {/if}
+	</form>
+    <p class="mt-8">
+        Kalo pengen coba pake <br> Email : husadasapp@gmail.com <br> Password : 123456780
+    </p>
 </div>
