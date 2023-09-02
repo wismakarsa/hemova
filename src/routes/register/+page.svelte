@@ -40,4 +40,8 @@
 			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary">Buat Akun</button>
 		</div>
 	</form>
+
+    <br>
+    <p>** belum bisa register sepenuhnya karena email service nya berbayar 😐</p>
 </div>
+
