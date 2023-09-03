@@ -4,4 +4,4 @@
 </script>
 
 
-<Hamburger {open} on:click={() => open = !open || console.log('asasa')} --line-width="3px" class="bg-base-300 ml-2 mr-1 z-[999]" />
+<Hamburger {open} on:click={() => open = !open || console.log('asasa')} --line-width="3px" class="ml-2 mr-1 z-[999]" />

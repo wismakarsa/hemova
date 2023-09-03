@@ -32,11 +32,11 @@
     <div class="divider"></div>
 </div>
 
-<div class="flex w-full h-full space-x-4 px-4">
+<div class="flex w-full h-full space-x-2 px-2">
     <ul class="menu bg-base-100 w-64 p-2 -mt-4 rounded-box sm:p-1">
         {#each navigation as navItem}
-        <li class="last: mb-2">
-            <a href={navItem.href} class="font-medium {$page.url.pathname === navItem.href ? 'active' : ''}">{navItem.title}</a>
+        <li class="last:mb-0 mb-1 ">
+            <a href={navItem.href} class="font-medium {$page.url.pathname === navItem.href ? 'active' : ''} p-4">{navItem.title}</a>
         </li>
         {/each}
     </ul>

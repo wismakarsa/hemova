@@ -9,4 +9,6 @@ export const generateUsername = (name) => {
     return `${name.slice(0, 5)}${id}`
 }
 
-/** Dispatch event on click outside of node */
+export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
+    return `https://husada.pockethost.io/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
+}
