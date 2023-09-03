@@ -42,6 +42,6 @@
 	</form>
 
     <br>
-    <p>** belum bisa register sepenuhnya karena email service nya berbayar 😐</p>
+    <!-- <p>** belum bisa register sepenuhnya karena email service nya berbayar 😐</p> -->
 </div>
 

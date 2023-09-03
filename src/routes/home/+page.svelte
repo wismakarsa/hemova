@@ -1,4 +1,5 @@
 <script>
+    export let data;
     // your script goes here
 
     function capitalize(string) {
@@ -30,6 +31,8 @@
 }
 
 
+const frontName = data?.user?.name.split(" ")[0]
+
 
 </script>
 
@@ -38,7 +41,7 @@
 <div class="welcome">
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
-<h1 class="welcome title text-3xl font-bold">Welcome Bunda 
+<h1 class="welcome title text-3xl font-bold">Welcome Bunda {capitalize(frontName)}
 </h1>
         </div>
     </div>

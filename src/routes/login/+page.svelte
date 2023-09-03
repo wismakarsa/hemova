@@ -43,6 +43,6 @@
         {/if}
 	</form>
     <p class="mt-8">
-        Kalo pengen coba pake <br> Email : husadasapp@gmail.com <br> Password : 123456780
+        Kalo pengen coba pake <br> Email : a@b.com <br> Password : 12345678
     </p>
 </div>
