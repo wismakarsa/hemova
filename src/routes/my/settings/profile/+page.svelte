@@ -46,9 +46,9 @@
     enctype="multipart/form-data"
     use:enhance={submitUpdateProfile}
     >
-        <h3 class="text-2xl font-medium">Update Profile</h3>
+        <h3 class="text-2xl font-semibold">Update Profil</h3>
         <div class="form-control w-full max-w-lg">
-            <label for="avatar" class="label font-medium pb-1">
+            <label for="avatar" class="label font-medium pb-2">
                 <span class="label-text">Profile Picture</span>
             </label>
             <label for="avatar" class="avatar w-32 rounded-full hover:cursor-pointer">
@@ -73,7 +73,8 @@
 
             />
         </div>
-        <Input id='name' label='Name' value={data?.user?.name} disabled={loading} class="text-gray-400"/>
+        <br>
+        <Input id='name' label='Nama' value={data?.user?.name} disabled={loading} class="text-gray-400"/>
         <div class="w-full max-w-lg pt-3">
             <button class="btn btn-primary w-full max-w-lg" type="submit" disabled={loading}>
                 Update Profile
