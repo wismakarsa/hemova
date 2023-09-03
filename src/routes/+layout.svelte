@@ -1,11 +1,25 @@
 <script>
+
+
 	import '../global.css';
     import 'iconify-icon';
+
+	import Navbar from '$lib/Navbar.svelte'
+	import Sidebar from '$lib/Sidebar.svelte'
+	import Hamburger from '$lib/Hamburger.svelte'
+
+
+
+	let open = false
+	export let sidebar = false
     export let data
 </script>
 
 <div class="min-h-full font-poppins">
+	<Sidebar bind:open/>
 	<nav class="navbar bg-base-100 border-b">
+		
+	    <Navbar bind:sidebar={open}/>
 		<div class="flex-1">
 			<a href="/" class="btn btn-ghost normal-case text-xl">🏥</a>
 		</div>
