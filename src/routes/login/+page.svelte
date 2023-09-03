@@ -29,8 +29,8 @@
 			</label>
 			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" />
 		</div>
-        <div class="w-full max-w-md text-start">
-            <a href="/reset password" class="font-medium text-left text-primary hover:cursor-pointer hover:underline">Lupa Password?</a>
+        <div class="w-full max-w-sm sm:max-w-md text-start">
+            <a href="/reset-password" class="font-medium text-left text-primary hover:cursor-pointer hover:underline">Lupa Password?</a>
         </div>
 		<div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
 			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary">Login</button>
