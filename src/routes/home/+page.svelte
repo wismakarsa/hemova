@@ -30,6 +30,29 @@
         break;
 }
 
+const aksesCepat = [
+    {
+        name: 'BMI Kalkulator',
+        href: '/bmi-kalkulator',
+        icon: 'B'
+    },
+    {
+        name: 'Grafik Pertumbuhan',
+        href: '/',
+        icon: 'G'
+    },
+    {
+        name: 'Jadwal Posyandu',
+        href: '/',
+        icon: 'J'
+    },
+    {
+        name: 'Show All',
+        href: '/',
+        icon: '...'
+    }
+]
+
 
 const frontName = data?.user?.name.split(" ")[0]
 
@@ -41,32 +64,29 @@ const frontName = data?.user?.name.split(" ")[0]
 <div class="welcome">
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
-<h1 class="welcome title text-3xl font-bold">Welcome Bunda {capitalize(frontName)}
+<h1 class="welcome title text-4xl font-semibold tracking-tight ">Halo, <br> Bunda {capitalize(frontName)}
 </h1>
         </div>
     </div>
 </div>
 
-<div class="bmi-calculator m-5">
-    <h1 class="text-xl">BMI Calculator</h1>
-    <!-- svelte-ignore a11y-label-has-associated-control -->
-    <label class="label">
-        <span class="label-text">Berat Badan</span>
-      </label>
-    <input bind:value={beratBadan} id="berat-badan" type="number" min="1" placeholder="Berat Badan (kg)" class="input input-bordered w-full max-w-xs" />
-    <!-- svelte-ignore a11y-label-has-associated-control -->
-    <label class="label">
-        <span class="label-text">Tinggi Badan</span>
-      </label>
-    <input bind:value={tinggiBadan} id="tinggi-badan" type="number" placeholder="Tinggi Badan (cm)" class="input input-bordered w-full max-w-xs" />
-    <br>
-    <button class="btn btn-wide my-2">Hitung</button>
-      <br>
-    <h1 style="display: inline;background: {bmiColor}; color:white" class="text-md" id="bmi-result">{result.toFixed(2)}</h1>
-    <h1>bb : {beratBadan}</h1>
-    <h1>tb : {tinggiBadan}</h1>
-</div>
 
+<!-- Akses Cepat -->
+<div>
+    <h3 class="font-medium my-2 mx-4">Akses Cepat</h3>
+
+    <div class="grid grid-cols-8 gap-x-24 sm:gap-x-10 quick-access mx-4">
+
+        {#each aksesCepat as itemAkses}
+        <div class="block w-20 h-20">
+            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-20 h-20">
+                {itemAkses.icon}
+             </a>
+             <span class="block text-xs text-center my-2">{itemAkses.name}</span>
+        </div>
+        {/each}
+    </div>
+</div>
 
 
 

@@ -3,11 +3,11 @@
 </script>
 
 
-<div class="flex flex-col items-center h-full w-full text-center">
+<div class="flex flex-col items-center h-full w-full text-center px-6">
 	<h2 class="mt-2 text-3xl font-bold tracking-tight text-base-content">
 		Reset Password Anda
 	</h2>
-    <p class="text-center mt-1">
+    <p class="text-center mt-1 px-1">
 		Kita akan mengirimkan email untuk me-reset password anda.
 	</p>
 	<form action="?/resetPassword" method="POST" class="flex flex-col items-center space-y-2 w-full pt-4 px-6">

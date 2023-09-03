@@ -1,4 +1,6 @@
 <script>
+
+    import { page } from '$app/stores'
     const navigation = [
         {
             title: 'Profile',
@@ -15,20 +17,30 @@
     ]
 </script>
 
-<div class="w-full h-full px-2">
-    <h3 class="text-2xl font-medium">Settings</h3>
+<div class="w-full h-full px-6 py-2 sm:px-4">
+<div class="grid grid-col">
+     <div class="inline-block align-baseline">
+         <h3 class="text-2xl font-medium">
+             <iconify-icon icon="solar:settings-linear" width="25" class="align-middle inline-block">
+             </iconify-icon>
+             Settings</h3>
+     </div>
+    
+</div>
+
+
     <div class="divider"></div>
 </div>
 
-<div class="flex w-full h-full space-x-4">
-    <ul class="menu bg-base-100 w-56 p-6 rounded-box">
+<div class="flex w-full h-full space-x-4 px-4">
+    <ul class="menu bg-base-100 w-64 p-2 -mt-4 rounded-box sm:p-1">
         {#each navigation as navItem}
-        <li>
-            <a href={navItem.href} class="font-medium">{navItem.title}</a>
+        <li class="last: mb-2">
+            <a href={navItem.href} class="font-medium {$page.url.pathname === navItem.href ? 'active' : ''}">{navItem.title}</a>
         </li>
         {/each}
     </ul>
-    <div class="w-full">
+    <div class="w-full mt-1">
         <slot />
     </div>
 </div>
