@@ -3,15 +3,15 @@
     import { page } from '$app/stores'
     const navigation = [
         {
-            title: 'Profile',
+            title: 'Profil',
             href: '/my/settings/profile'
         },
         {
-            title: 'Account',
+            title: 'Akun',
             href: '/my/settings/account'
         },
         {
-            title: 'Security',
+            title: 'Keamanan',
             href: '/my/settings/security'
         }
     ]

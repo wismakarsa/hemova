@@ -6,6 +6,17 @@
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    const today = new Date()
+    const curHr = today.getHours()
+    let greetings = ''
+    if (curHr < 12) {
+        greetings = 'Selamat Pagi'
+    } else if (curHr < 18) {
+        greetings = 'Selamat Sore'
+    } else {
+        greetings = 'Selamat Malam'
+    }
+
     let beratBadan;
     let tinggiBadan;
     $: result = beratBadan / (tinggiBadan/100 * 2);
@@ -64,7 +75,7 @@ const frontName = data?.user?.name.split(" ")[0]
 <div class="welcome">
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
-<h1 class="welcome title text-3xl font-semibold tracking-tight ">Halo, <br> Bunda {capitalize(frontName)}
+<h1 class="welcome title text-3xl font-semibold tracking-tight ">{greetings}, <br> Bunda {capitalize(frontName)} <iconify-icon icon="fluent-emoji:sparkles"></iconify-icon>
 </h1>
         </div>
     </div>

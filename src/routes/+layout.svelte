@@ -1,5 +1,6 @@
 <script>
-
+	import { slide } from 'svelte/transition';
+  	import { quintOut } from 'svelte/easing';
 	import { getImageURL } from '$lib/utils.js';
 	import '../global.css';
     import 'iconify-icon';
@@ -9,10 +10,15 @@
 	import Hamburger from '$lib/Hamburger.svelte'
 
 
-
+	let homeHref = '/'
 	let open = false
-	export let sidebar = false
     export let data
+	
+
+	if (data.user){
+		homeHref = '/home'
+	}
+	
 </script>
 
 <div class="min-h-full font-poppins">
@@ -20,8 +26,12 @@
 	<nav class="navbar bg-base-100 border-b">
 		
 	    <Navbar bind:sidebar={open}/>
-		<div class="flex-1">
-			<a href="/" class="btn btn-ghost normal-case text-xl">🏥</a>
+		<div class="flex-1" >
+			<a href={homeHref} class="btn btn-ghost normal-case text-xl">
+				<iconify-icon icon="fluent-emoji:beaming-face-with-smiling-eyes" width="35">
+				</iconify-icon>
+			</a>
+				
 		</div>
 		<div class="flex-none">
 			{#if !data.user}
@@ -30,14 +40,22 @@
 					<a href="/register" class="btn btn-primary">Daftar</a>
 				</div>
 			{:else}
-				<!-- <div class="dropdown dropdown-end mr-4">
-					<a href="/bayi/new" class="btn btn-primary btn-outline">+</a>
-				</div> -->
+				{#if !data.user.verified}
+					<a href="/verifikasi" class="btn btn-sm text-xs bg-yellow-500 mr-2 sm:btn-xs">
+						<iconify-icon icon="typcn:warning" class="text-xl sm:text-sm"></iconify-icon>
+						<span class="hidden sm:block">			
+						Belum me-verifikasi email
+					</span>
+					<span class="block sm:hidden">			
+						Verifikasi Email
+					</span>
+					</a>
+				{/if}
 				<div class="dropdown dropdown-end">
 					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label tabindex="0" class="btn btn-ghost btn-circle avatar">
-						<div class="w-10 rounded-full">
+						<div class="w-10 rounded-full">		
 							<img src={data.user?.avatar ? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar) : `https://ui-avatars.com/api/?name=${data.user?.name}`}  alt="User avatar" />
 						</div>
 					</label>

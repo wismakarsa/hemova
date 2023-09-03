@@ -12,3 +12,8 @@ export const generateUsername = (name) => {
 export const getImageURL = (collectionId, recordId, fileName, size = '0x0') => {
     return `https://husada.pockethost.io/api/files/${collectionId}/${recordId}/${fileName}?thumb=${size}`;
 }
+
+export const hideEmail = (email) => {
+    const partialEmail = email.replace(/(\w{3})[\w.-]+@([\w.]+\w)/, "$1***@$2")
+    return partialEmail
+}
