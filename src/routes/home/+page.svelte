@@ -64,7 +64,7 @@ const frontName = data?.user?.name.split(" ")[0]
 <div class="welcome">
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
-<h1 class="welcome title text-4xl font-semibold tracking-tight ">Halo, <br> Bunda {capitalize(frontName)}
+<h1 class="welcome title text-3xl font-semibold tracking-tight ">Halo, <br> Bunda {capitalize(frontName)}
 </h1>
         </div>
     </div>
@@ -75,14 +75,14 @@ const frontName = data?.user?.name.split(" ")[0]
 <div>
     <h3 class="font-medium my-2 mx-4">Akses Cepat</h3>
 
-    <div class="grid grid-cols-8 gap-x-24 sm:gap-x-10 quick-access mx-4">
+    <div class="grid grid-cols-8 gap-x-20 sm:gap-x-10 quick-access mx-4">
 
         {#each aksesCepat as itemAkses}
-        <div class="block w-20 h-20">
-            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-20 h-20">
+        <div class="block w-16 h-16">
+            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16">
                 {itemAkses.icon}
              </a>
-             <span class="block text-xs text-center my-2">{itemAkses.name}</span>
+             <span class="block text-[0.60em] text-center my-2 font-medium">{itemAkses.name}</span>
         </div>
         {/each}
     </div>
