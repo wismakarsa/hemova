@@ -18,14 +18,13 @@
 </script>
 
 <div class="w-full h-full px-6 py-2 sm:px-4">
-<div class="grid grid-col">
-     <div class="inline-block align-baseline">
-         <h3 class="text-2xl font-medium">
-             <iconify-icon icon="solar:settings-linear" width="25" class="align-middle inline-block">
-             </iconify-icon>
-             Settings</h3>
+    <div class="grid grid-col">
+        <div class="inline-block align-baseline">
+            <h3 class="text-2xl font-medium">
+                <iconify-icon icon="solar:settings-linear" width="25" class="align-middle inline-block">
+                </iconify-icon>
+                Settings</h3>
      </div>
-    
 </div>
 
 

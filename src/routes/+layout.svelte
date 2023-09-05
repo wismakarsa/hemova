@@ -31,7 +31,7 @@
 		{
 			name: 'profil',
 			href: '/my/settings/profile',
-			iconSize: '20',
+			iconSize: '24',
 			icon: 'fa:user'
 		}
 	]
@@ -42,13 +42,16 @@
 	
 </script>
 
+
+
 <div class="min-h-full font-poppins">
+	
 	<!-- <Sidebar bind:open/> -->
-	<nav class="navbar bg-base-100">
+	<nav class="navbar bg-base-100 z-[80]">
 	    <!-- <Navbar bind:sidebar={open}/> -->
 		<div class="flex-1" >
 			<!--  🔵	conditional class `swap-active` 👇	 -->
-			<label for="my-drawer-3" class:swap-active={isDrawerOpen} class="btn btn-circle swap swap-rotate bg-base-100">
+			<label for="my-drawer-3" class:swap-active={isDrawerOpen} class="btn btn-circle swap swap-rotate bg-base-100 border-0 md:hidden">
 				<svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
 				<svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
 			  </label>
@@ -103,7 +106,7 @@
 					</ul>
 
 				</div>
-				<div class="btm-nav md:hidden">
+				<div class="btm-nav md:hidden z-[20]">
 					<ul class="menu menu-horizontal bg-base-100 basis-[88%] rounded-full mb-8 gap-10 sm:gap-20 shadow-[0px_9px_20px] shadow-primary/40">
 						{#each iconMenu as btn}
 						<li class="{btn.name}"> 
@@ -118,11 +121,12 @@
 			{/if}
 			
 		</div>
+		
 	</nav>
 	<div class="drawer drawer-mobile w-full h-full">
 		<!--  🔵	bind the `checked` attribute of checkbox 👇	 -->
     <input id="my-drawer-3" type="checkbox" bind:checked={isDrawerOpen} class="drawer-toggle"> 
-    <div class="drawer-side">
+    <div class="drawer-side z-[25]">
       <label for="my-drawer-3" class="drawer-overlay"></label> 
       <ul class="p-4 overflow-y-auto menu w-80 bg-base-200 h-full">
         <!-- Sidebar content here -->
@@ -131,9 +135,17 @@
       </ul>
     </div>
   </div>
-	<div class="py-4">
+	<div class="py-4 mb-20 md:mb-5">
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<slot />
 		</div>
 	</div>
 </div>
+
+<style>
+
+.drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+	backdrop-filter: blur(2px);
+}
+
+</style>
