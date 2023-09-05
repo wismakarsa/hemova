@@ -43,9 +43,9 @@
 
 const aksesCepat = [
     {
-        name: 'BMI Kalkulator',
+        name: 'Darah',
         href: '/bmi-kalkulator',
-        icon: 'B'
+        icon: 'D'
     },
     {
         name: 'Grafik Pertumbuhan',
