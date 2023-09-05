@@ -104,7 +104,7 @@
 
 				</div>
 				<div class="btm-nav md:hidden">
-					<ul class="menu menu-horizontal bg-base-200 basis-[88%] rounded-full mb-5 gap-10 sm:gap-20">
+					<ul class="menu menu-horizontal bg-base-100 basis-[88%] rounded-full mb-8 gap-10 sm:gap-20 shadow-[0px_9px_20px] shadow-primary/40">
 						{#each iconMenu as btn}
 						<li class="{btn.name}"> 
 						  <a href={btn.href}>
