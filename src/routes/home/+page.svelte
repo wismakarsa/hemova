@@ -75,6 +75,23 @@ const aksesCepat = [
     }
 ]
 
+const articles = [
+    {
+        title: 'Pariatur dolor sint mollit ut irure magna incididunt.',
+        href: '#',
+        description: 'Commodo duis tempor irure est. Officia est cillum culpa aute anim dolore dolor deserunt fugiat aute elit ea occaecat. Ut amet anim officia esse veniam officia dolore enim proident.'
+    },
+    {
+        title: 'Pariatur dolor sint mollit ut irure magna incididunt.',
+        href: '#',
+        description: ']Ut amet anim officia esse veniam officia dolore enim proident. Quis ipsum nostrud ea dolore adipisicing proident tempor dolore esse. Id veniam irure ad mollit.'
+    },
+    {
+        title: 'Pariatur dolor sint mollit ut irure magna incididunt.',
+        href: '#',
+        description: ']Quis ipsum nostrud ea dolore adipisicing proident tempor dolore esse. Id veniam irure ad mollit.'
+    }
+]
 
 const frontName = data?.user?.name.split(" ")[0]
 
@@ -95,13 +112,13 @@ const frontName = data?.user?.name.split(" ")[0]
 
 <!-- Akses Cepat -->
 <div >
-    <h3 class="font-medium my-2 mx-4" in:fly="{{ y: 200, duration: 800, easing: cubicInOut }}">Akses Cepat</h3>
+    <h3 class="font-medium my-2 mx-4" in:fly="{{ y: 10, duration: 800, easing: cubicInOut }}">Akses Cepat</h3>
 
-    <div class="grid grid-cols-8 gap-x-20 sm:gap-x-10 quick-access mx-4" in:fly="{{ y: 200, duration: 1000, easing: cubicInOut }}">
+    <div class="grid grid-cols-8 gap-x-20 sm:gap-x-10 quick-access mx-4">
 
         {#each aksesCepat as itemAkses, i}
-        <div class="block w-16 h-16">
-            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16" >
+        <div class="w-16 h-16" in:fly|global="{{ y: 70, duration: 1000, easing: cubicInOut, delay: 50 * i }}">
+            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16 shadow-lg shadow-primary/40 no-animation"  >
                 {itemAkses.icon}
              </a>
              <span class="block text-[0.60em] text-center my-2 font-medium">{itemAkses.name}</span>
@@ -110,6 +127,34 @@ const frontName = data?.user?.name.split(" ")[0]
     </div>
 </div>
 {/if}
+<div class="home-feed my-[4em]">
+    <h3 class="font-medium mt-2 mx-4" in:fly|global="{{ y: 50, duration: 800, easing: cubicInOut, delay: 80 }}">Artikel</h3>
+
+
+
+<div class="grid-cols-1 sm:grid md:grid-cols-2 ">
+    {#each articles as a, i}
+    <div
+      class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-700 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}">
+      <a href="#!">
+        <img
+          class="rounded-t-lg"
+          src="https://picsum.photos/800/300"
+          alt="Hollywood Sign on The Hill" />
+      </a>
+      <div class="p-6">
+        <h5
+          class="mb-2 text-md font-medium leading-tight text-neutral-800">
+          {a.title}
+        </h5>
+        <p class="mb-4 text-[0.60em] text-neutral-600">
+          {a.description}
+        </p>
+      </div>
+    </div>
+    {/each}
+  </div>
+</div>
 
 <style>
 

@@ -9,6 +9,7 @@
 	import '../global.css';
     import 'iconify-icon';
 
+
 	let ready = false;
 
 	onMount(() => {
@@ -121,11 +122,14 @@ description="development website"
 					</ul>
 
 				</div>
+				<!-- Bottom Nav Bar -->
+				<div class="backgradient sm:hidden">
+				</div>
 				<div class="btm-nav md:hidden z-[20]">
-					<ul class="menu menu-horizontal bg-base-100 basis-[88%] rounded-full mb-8 gap-10 sm:gap-20 shadow-[0px_9px_20px] shadow-primary/40">
+					<ul class="menu-bn menu menu-horizontal bg-base-100 basis-[88%] rounded-full mb-8 gap-10 sm:gap-20 shadow-[0px_9px_20px] shadow-primary/40">
 						{#each iconMenu as btn}
 						<li class="{btn.name} "> 
-						  <a href={btn.href} class="text-gray-300 hover:bg-base-100 active:bg-base-100 hover:text-primary {$page.url.pathname === btn.href ? 'text-primary' : ''}">
+						  <a href={btn.href} class="text-gray-300 hover:bg-base-100 active:bg-transparent hover:text-primary {$page.url.pathname === btn.href ? 'text-primary' : ''}">
 							<iconify-icon icon={btn.icon} width={btn.iconSize}></iconify-icon>
 						</a>
 						</li>
@@ -143,7 +147,7 @@ description="development website"
     <input id="my-drawer-3" type="checkbox" bind:checked={isDrawerOpen} class="drawer-toggle"> 
     <div class="drawer-side z-[25]">
       <label for="my-drawer-3" class="drawer-overlay transition-all transition-300"></label> 
-      <ul class="p-4 overflow-y-auto menu w-80 bg-base-200 h-full w-[70%] sm:w-[40]">
+      <ul class="p-4 overflow-y-auto menu bg-base-100 h-full w-[70%] sm:w-[40]">
         <!-- Sidebar content here -->
         <li><span>Sidebar Item 1</span></li>
         <li><span>Sidebar Item 2</span></li>
@@ -167,13 +171,35 @@ description="development website"
 	backdrop-filter: blur(1px);
 }
 
-.menu li > *:not(ul):not(.menu-title):not(details):active, .menu li > *:not(ul):not(.menu-title):not(details):active {
+.menu-bn li > *:not(ul):not(.menu-title):not(details):active, .menu-bn li > *:not(ul):not(.menu-title):not(details):active {
 	background: transparent !important
 }
 
 :where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(summary):not(.active):focus {
 	background: transparent;
 	color: var(--primary);
+}
+
+.btm-nav {
+	background: transparent;
+	/* background: rgb(255,255,255);
+	background: linear-gradient(0deg, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 70%);  */
+}
+
+.backgradient {
+	overflow-y: hidden;
+	background: #96b2ff00;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	top: calc(100vh - 7rem);
+	height: calc(20vh - 10px);
+	-webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px);
+	-webkit-mask: linear-gradient(0deg, rgba(0,0,0,1) 34%, rgba(255,255,255,0) 93%);
+	mask: linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(255,255,255,0) 93%);
 }
 
 </style>
