@@ -1,14 +1,19 @@
 <script>
+	import { page } from '$app/stores';
+    import { onMount } from 'svelte'
+    import { fade, fly } from 'svelte/transition'
 	import { slide } from 'svelte/transition';
   	import { quintOut } from 'svelte/easing';
+	import { MetaTags } from 'svelte-meta-tags';
 	import { getImageURL } from '$lib/utils.js';
 	import '../global.css';
     import 'iconify-icon';
 
-	// import Navbar from '$lib/Navbar.svelte'
-	// import Sidebar from '$lib/Sidebar.svelte'
-	// import Hamburger from '$lib/Hamburger.svelte'
+	let ready = false;
 
+	onMount(() => {
+		ready = true;
+	})
 
 	let homeHref = '/'
 	let isDrawerOpen = false
@@ -32,7 +37,7 @@
 			name: 'profil',
 			href: '/my/settings/profile',
 			iconSize: '24',
-			icon: 'fa:user'
+			icon: 'fa-solid:user'
 		}
 	]
 
@@ -42,8 +47,18 @@
 	
 </script>
 
+<svelte:head>
+<MetaTags
+title="Prototype"
+titleTemplate="%s | development"
+description="development website"
+/>
+
+</svelte:head>
 
 
+
+{#if ready}
 <div class="min-h-full font-poppins">
 	
 	<!-- <Sidebar bind:open/> -->
@@ -92,7 +107,7 @@
 						tabindex="0"
 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 					>
-						<li><a href="/my/bayi">
+						<li><a href="#">
                                 <iconify-icon icon="lucide:baby"></iconify-icon>
                                 Bayiku</a>
 						</li>
@@ -109,8 +124,8 @@
 				<div class="btm-nav md:hidden z-[20]">
 					<ul class="menu menu-horizontal bg-base-100 basis-[88%] rounded-full mb-8 gap-10 sm:gap-20 shadow-[0px_9px_20px] shadow-primary/40">
 						{#each iconMenu as btn}
-						<li class="{btn.name}"> 
-						  <a href={btn.href}>
+						<li class="{btn.name} "> 
+						  <a href={btn.href} class="text-gray-300 hover:bg-base-100 active:bg-base-100 hover:text-primary {$page.url.pathname === btn.href ? 'text-primary' : ''}">
 							<iconify-icon icon={btn.icon} width={btn.iconSize}></iconify-icon>
 						</a>
 						</li>
@@ -127,25 +142,38 @@
 		<!--  🔵	bind the `checked` attribute of checkbox 👇	 -->
     <input id="my-drawer-3" type="checkbox" bind:checked={isDrawerOpen} class="drawer-toggle"> 
     <div class="drawer-side z-[25]">
-      <label for="my-drawer-3" class="drawer-overlay"></label> 
-      <ul class="p-4 overflow-y-auto menu w-80 bg-base-200 h-full">
+      <label for="my-drawer-3" class="drawer-overlay transition-all transition-300"></label> 
+      <ul class="p-4 overflow-y-auto menu w-80 bg-base-200 h-full w-[70%] sm:w-[40]">
         <!-- Sidebar content here -->
         <li><span>Sidebar Item 1</span></li>
         <li><span>Sidebar Item 2</span></li>
       </ul>
     </div>
   </div>
-	<div class="py-4 mb-20 md:mb-5">
+  
+	<div class="py-4 mb-20 md:mb-5" >
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 			<slot />
 		</div>
 	</div>
+	
 </div>
+
+{/if}
 
 <style>
 
 .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
-	backdrop-filter: blur(2px);
+	backdrop-filter: blur(1px);
+}
+
+.menu li > *:not(ul):not(.menu-title):not(details):active, .menu li > *:not(ul):not(.menu-title):not(details):active {
+	background: transparent !important
+}
+
+:where(.menu li:not(.menu-title):not(.disabled) > *:not(ul):not(details):not(.menu-title)):not(summary):not(.active):focus {
+	background: transparent;
+	color: var(--primary);
 }
 
 </style>

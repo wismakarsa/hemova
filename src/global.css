@@ -13,3 +13,6 @@
     margin: 0;
    }
  
+   :root {
+    --primary: #436acd;
+  }

@@ -1,6 +1,15 @@
 <script>
+    import { onMount } from 'svelte'
+    import { fly } from 'svelte/transition'
+    import { cubicInOut } from 'svelte/easing';
     export let data;
     // your script goes here
+
+    let readyPage = false
+
+    onMount(() => {
+        readyPage = true
+    })
 
     function capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
@@ -16,6 +25,8 @@
     } else {
         greetings = 'Selamat Malam'
     }
+
+
 
     let beratBadan;
     let tinggiBadan;
@@ -80,17 +91,17 @@ const frontName = data?.user?.name.split(" ")[0]
         </div>
     </div>
 </div>
-
+{#if readyPage}
 
 <!-- Akses Cepat -->
-<div>
-    <h3 class="font-medium my-2 mx-4">Akses Cepat</h3>
+<div >
+    <h3 class="font-medium my-2 mx-4" in:fly="{{ y: 200, duration: 800, easing: cubicInOut }}">Akses Cepat</h3>
 
-    <div class="grid grid-cols-8 gap-x-20 sm:gap-x-10 quick-access mx-4">
+    <div class="grid grid-cols-8 gap-x-20 sm:gap-x-10 quick-access mx-4" in:fly="{{ y: 200, duration: 1000, easing: cubicInOut }}">
 
-        {#each aksesCepat as itemAkses}
+        {#each aksesCepat as itemAkses, i}
         <div class="block w-16 h-16">
-            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16">
+            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16" >
                 {itemAkses.icon}
              </a>
              <span class="block text-[0.60em] text-center my-2 font-medium">{itemAkses.name}</span>
@@ -98,8 +109,7 @@ const frontName = data?.user?.name.split(" ")[0]
         {/each}
     </div>
 </div>
-
-
+{/if}
 
 <style>
 
