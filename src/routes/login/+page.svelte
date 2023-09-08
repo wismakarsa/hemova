@@ -17,6 +17,7 @@
 			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary"><iconify-icon icon="bi:google"></iconify-icon>Masuk dengan Google</button>
 		</div>
         <div class="divider max-w-sm sm:max-w-md w-full self-auto">atau</div>
+		
 		<div class="form-control w-full max-w-sm sm:max-w-md">
 			<label for="email" class="label font-medium pb-1">
 				<span class="label-text">Email</span>
@@ -29,9 +30,18 @@
 			</label>
 			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" />
 		</div>
+		<div class="form-control w-full max-w-sm sm:max-w-md">
+			<select class="select select-bordered" name="userType" id="userType" >
+				<option disabled selected>Login sebagai ?</option>
+				<option value="user">Siswi</option>
+				<option value="admin">Admin</option>
+			  </select>
+		</div>
+		
         <div class="w-full max-w-sm sm:max-w-md text-start">
             <a href="/reset-password" class="font-medium text-left text-primary hover:cursor-pointer hover:underline">Lupa Password?</a>
         </div>
+
 		<div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
 			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary">Login</button>
 		</div>

@@ -5,6 +5,8 @@
     import { Input } from '$lib/components'
 	import { getImageURL } from '$lib/utils.js';
 
+    console.log('locals' )
+
     let loading
 
     $: loading = false
@@ -36,6 +38,8 @@
             loading = false
         }
     }
+
+    console.log('ini userType', data.userType)
 </script>
 
 
@@ -72,6 +76,7 @@
             disabled={loading}
 
             />
+            <input type="hidden" name="userType" value={data.userType}>
         </div>
         <br>
         <Input id='name' label='Nama' value={data?.user?.name} disabled={loading} class="text-gray-400"/>

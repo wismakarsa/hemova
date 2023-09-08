@@ -45,6 +45,7 @@
 	if (data.user){
 		homeHref = '/home'
 	}
+
 	
 </script>
 

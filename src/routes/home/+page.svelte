@@ -6,6 +6,7 @@
     // your script goes here
 
     let readyPage = false
+    let userMessage = 'Bunda'
 
     onMount(() => {
         readyPage = true
@@ -93,8 +94,13 @@ const articles = [
     }
 ]
 
-const frontName = data?.user?.name.split(" ")[0]
+if (data.user?.collectionName === 'admins') {
+    userMessage = 'Admin'
 
+}
+
+const frontName = data?.user?.name.split(" ")[0]
+console.log(data.user)
 
 </script>
 
@@ -103,7 +109,7 @@ const frontName = data?.user?.name.split(" ")[0]
 <div class="welcome">
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
-<h1 class="welcome title text-3xl font-semibold tracking-tight ">{greetings}, <br> Bunda {capitalize(frontName)} <iconify-icon icon="fluent-emoji:sparkles"></iconify-icon>
+<h1 class="welcome title text-3xl font-semibold tracking-tight ">{greetings}, <br> {userMessage} {capitalize(frontName)} <iconify-icon icon="fluent-emoji:sparkles"></iconify-icon>
 </h1>
         </div>
     </div>

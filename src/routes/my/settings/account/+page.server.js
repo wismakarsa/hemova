@@ -1,11 +1,13 @@
 import { error } from '@sveltejs/kit';
+import { serializeNonPOJOs } from '$lib/utils.js';
 
 export const actions = {
 	updateEmail: async ({ request, locals }) => {
 		const data = Object.fromEntries(await request.formData());
+		let userTypeRes = serializeNonPOJOs(locals.user?.collectionName)
 
 		try {
-			await locals.pb.collection('users').requestEmailChange(data.email);
+			await locals.pb.collection(`${userTypeRes}`).requestEmailChange(data.email);
 		} catch (err) {
 			throw error(err.status, err.message);
 		}
@@ -16,14 +18,16 @@ export const actions = {
     },
 	updateUsername: async ({ request, locals }) => {
 		const data = Object.fromEntries(await request.formData());
+		let userTypeRes = serializeNonPOJOs(locals.user?.collectionName)
+
 
 		try {
-			await locals.pb.collection('users').getFirstListItem(`username = "${data.username}"`);
+			await locals.pb.collection(`${userTypeRes}`).getFirstListItem(`username = "${data.username}"`);
 		} catch (err) {
 			if (err.status === 404) {
 				try {
 					const { username } = await locals.pb
-						.collection('users')
+						.collection(`${userTypeRes}`)
 						.update(locals.user.id, { username: data.username });
 					locals.user.username = username;
 					return {
