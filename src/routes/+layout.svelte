@@ -226,15 +226,13 @@ description="development website"
 	background-repeat: no-repeat;
 	background-size: 200%;
 	background-position: 70% -25%;
+	transition: all 2s ease-out;
 }
-
 .no-bg-svg {
 	/* background: url('/svg/blob-haikei.svg'); */
 	background: transparent;
-	background-size: 200%;
-	background-position: 70% -25%;
-
+	background-position: 100% -25%;
+	transition: all 2s ease-in-out;
 }
-
 
 </style>
