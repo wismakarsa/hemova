@@ -185,9 +185,9 @@ description="development website"
 
 <style>
 
-.drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
+/* .drawer-toggle:checked ~ .drawer-side > .drawer-overlay {
 	backdrop-filter: blur(1px);
-}
+} */
 
 .menu-bn li > *:not(ul):not(.menu-title):not(details):active, .menu-bn li > *:not(ul):not(.menu-title):not(details):active {
 	background: transparent !important
@@ -226,14 +226,14 @@ description="development website"
 	background-repeat: no-repeat;
 	background-size: 200%;
 	background-position: 70% -25%;
-	transition: all 2s ease-out;
 }
 
 .no-bg-svg {
 	/* background: url('/svg/blob-haikei.svg'); */
-	/* background: transparent; */
-	background-position: 100% -25%;
-	transition: all 2s ease-in-out;
+	background: transparent;
+	background-size: 200%;
+	background-position: 70% -25%;
+
 }
 
 

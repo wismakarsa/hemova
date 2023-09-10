@@ -135,7 +135,7 @@ console.log(data.user)
 <div >
     <h3 class="font-medium my-2 mx-4" in:fly="{{ y: 10, duration: 800, easing: cubicInOut }}">Akses Cepat</h3>
 
-    <div class="grid grid-flow-col grid-cols-20 gap-x-3 sm:gap-x-2 quick-access mx-4 h-full no-scrollbar overflow-x-auto pb-10 masked-overflow overscroll-x-contain sm:grid-cols-8">
+    <div class="grid grid-flow-col grid-cols-20 gap-x-3 sm:gap-x-2 quick-access mx-4 h-full no-scrollbar overflow-x-auto pb-10 pl-4 -mx-1 mr-4 masked-overflow overscroll-x-contain sm:grid-cols-8">
 
         {#each aksesCepat as itemAkses, i}
         <div class="w-16 h-16 grid grid-row-[min-content]" in:fly|global="{{ y: 30, duration: 1000, easing: cubicInOut, delay: 50 * i }}">
@@ -209,7 +209,7 @@ console.log(data.user)
     --mask-image-content: linear-gradient(
         to right,
         transparent,
-        black calc(10% - 3em),
+        black calc(10% - 2em),
         rgb(0, 0, 0) calc(100% - 2em),
         rgba(0, 0, 0, 0)
     );
