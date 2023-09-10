@@ -1,7 +1,11 @@
 <script>
     import Transition from '$lib/components/Transition.svelte';
+
     export let data
     import { page } from '$app/stores'
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
+    import { quartIn } from 'svelte/easing';
     const navigation = [
         {
             title: 'Profil',
@@ -16,34 +20,43 @@
             href: '/my/settings/security'
         }
     ]
+
+    let settingsReady = false;
+
+    onMount(() => {
+        settingsReady = true;
+    })
 </script>
+{#if settingsReady}
+<div in:fly={{ x: -10, duration: 300, dealy: 200, easing: quartIn}} out:fly={{ x: -10, duration: 200, easing: quartIn }}>
+    <div class="w-full h-full px-6 py-2 sm:px-4">
+        <div class="grid grid-col">
+            <div class="inline-block align-baseline">
+                <h3 class="text-2xl font-semibold">
+                    <iconify-icon icon="solar:settings-linear" width="25" class="align-middle inline-block">
+                    </iconify-icon>
+                    Settings</h3>
+        </div>
+    </div>
 
-<div class="w-full h-full px-6 py-2 sm:px-4">
-    <div class="grid grid-col">
-        <div class="inline-block align-baseline">
-            <h3 class="text-2xl font-semibold">
-                <iconify-icon icon="solar:settings-linear" width="25" class="align-middle inline-block">
-                </iconify-icon>
-                Settings</h3>
-     </div>
-</div>
 
+        <div class="divider"></div>
+    </div>
 
-    <div class="divider"></div>
-</div>
-
-<div class="flex w-full h-full space-x-2 px-2">
-    <ul class="menu bg-base-100 w-64 p-2 -mt-4 rounded-box sm:p-1">
-        {#each navigation as navItem}
-        <li class="last:mb-0 mb-1 ">
-            <a href={navItem.href} class="font-medium {$page.url.pathname === navItem.href ? 'active' : ''} p-4">{navItem.title}</a>
-        </li>
-        {/each}
-    </ul>
-    <div class="w-full mt-1">
-        <Transition pathname={data.currentPath}>
-            <slot />
-        </Transition>
+    <div class="flex w-full h-full space-x-2 px-2">
+        <ul class="menu bg-base-100 w-64 p-2 -mt-4 rounded-box sm:p-1">
+            {#each navigation as navItem}
+            <li class="last:mb-0 mb-1 ">
+                <a href={navItem.href} class="font-medium {$page.url.pathname === navItem.href ? 'active' : ''} p-4">{navItem.title}</a>
+            </li>
+            {/each}
+        </ul>
+        <div class="w-full mt-1">
+            <Transition pathname={data.currentPath}>
+                <slot />
+            </Transition>
+        </div>
     </div>
 </div>
     
+{/if}

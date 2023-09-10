@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores';
     import { onMount } from 'svelte'
-    // import { fade, fly } from 'svelte/transition'
+    import { fade } from 'svelte/transition'
 	// import { slide } from 'svelte/transition';
   	// import { quintOut } from 'svelte/easing';
 	import Transition from '$lib/components/Transition.svelte';
@@ -67,7 +67,7 @@ description="development website"
 
 
 {#if ready}
-<div class="min-h-full font-poppins {(data.currentPath === '/home') ? 'bg-svg' : ' '} scrollbar-hide">
+<div class="min-h-full font-poppins {(data.currentPath === '/home') ? 'bg-svg' : 'no-bg-svg'} scrollbar-hide" >
 	<nav class="navbar z-[80] ">
 		<div class="flex-1 " >
 			<!--  🔵	conditional class `swap-active` 👇	 -->
@@ -99,6 +99,10 @@ description="development website"
 					</span>
 					</a>
 				{/if}
+				<a href="#" class="btn btn-sm btn-circle bg-base-100 border-0 mx-1">
+					<iconify-icon icon="solar:bell-bold" class="text-xl"></iconify-icon>
+				</a>
+					
 				<div class="dropdown dropdown-end">
 					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 					<!-- svelte-ignore a11y-label-has-associated-control -->
@@ -203,15 +207,16 @@ description="development website"
 .backgradient {
 	overflow-y: hidden;
 	background: #96b2ff00;
+	/* background: #ff0000; */
 	position: fixed;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	margin: 0;
-	top: calc(100vh - 7rem);
+	top: calc(100vh - 5rem);
 	height: calc(20vh - 10px);
-	-webkit-backdrop-filter: blur(2px);
-	backdrop-filter: blur(2px);
+	/* -webkit-backdrop-filter: blur(2px);
+	backdrop-filter: blur(2px); */
 	-webkit-mask: linear-gradient(0deg, rgba(0,0,0,1) 34%, rgba(255,255,255,0) 93%);
 	mask: linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(255,255,255,0) 93%);
 }
@@ -219,8 +224,17 @@ description="development website"
 .bg-svg {
 	background: url('/svg/blob-haikei.svg');
 	background-repeat: no-repeat;
-	background-size: 152%;
-	background-position: 90% -20%;
+	background-size: 200%;
+	background-position: 70% -25%;
+	transition: all 2s ease-out;
 }
+
+.no-bg-svg {
+	/* background: url('/svg/blob-haikei.svg'); */
+	/* background: transparent; */
+	background-position: 100% -25%;
+	transition: all 2s ease-in-out;
+}
+
 
 </style>

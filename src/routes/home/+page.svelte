@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte'
-    import { fly } from 'svelte/transition'
+    import { fly, fade } from 'svelte/transition'
     import { cubicInOut } from 'svelte/easing';
     export let data;
     // your script goes here
@@ -104,9 +104,10 @@ console.log(data.user)
 
 </script>
 
+{#if readyPage}
 
 
-<div class="welcome">
+<div class="welcome" in:fade={{duration: 200}}>
     <div class="text-left">
       <div class="max-w-md m-5 mt-10 mb-[6em]  ">
 <h1 class="welcome title text-3xl font-semibold tracking-tight ">{greetings}, <br> {userMessage} {capitalize(frontName)} <iconify-icon icon="fluent-emoji:sparkles"></iconify-icon>
@@ -114,7 +115,6 @@ console.log(data.user)
         </div>
     </div>
 </div>
-{#if readyPage}
 
 <!-- Akses Cepat -->
 <div >
@@ -143,7 +143,7 @@ console.log(data.user)
     {#each articles as a, i}
     <a href="#!">
     <div
-      class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-700 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}">
+      class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-100 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}">
       <img
       class="rounded-t-lg aspect-[8/3]"
       src="https://placekitten.com/500/188"
