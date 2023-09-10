@@ -54,12 +54,12 @@
 
 
 <div class="flex flex-col w-full h-full space-y-12">
-    <div class="w-ful">
-        <h3 class="text-2xl font-medium">
+    <div class="w-full">
+        <h3 class="text-2xl font-semibold">
             Ubah Email
         </h3>
         <div class="divider mb-0.5"></div>
-        <p class="text-md my-2">{hideEmail(data.user?.email)}</p>
+        <p class="text-sm my-2 over">{hideEmail(data.user?.email)}</p>
         <Modal label="change-email" checked={emailModalOpen}>
             <span slot="trigger" class="btn btn-primary">Ubah Email</span>
             <h3 slot="heading">📫 Ubah Email anda</h3>
@@ -79,7 +79,7 @@
     </div>
     <!-- Username Change -->
     <div class="w-full">
-        <h3 class="text-2xl font-medium">
+        <h3 class="text-2xl font-semibold">
             Ubah Username
         </h3>
         <div class="divider mb-0.5"></div>

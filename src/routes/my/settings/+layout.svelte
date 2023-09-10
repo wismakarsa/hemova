@@ -1,5 +1,6 @@
 <script>
-
+    import Transition from '$lib/components/Transition.svelte';
+    export let data
     import { page } from '$app/stores'
     const navigation = [
         {
@@ -20,7 +21,7 @@
 <div class="w-full h-full px-6 py-2 sm:px-4">
     <div class="grid grid-col">
         <div class="inline-block align-baseline">
-            <h3 class="text-2xl font-medium">
+            <h3 class="text-2xl font-semibold">
                 <iconify-icon icon="solar:settings-linear" width="25" class="align-middle inline-block">
                 </iconify-icon>
                 Settings</h3>
@@ -40,6 +41,9 @@
         {/each}
     </ul>
     <div class="w-full mt-1">
-        <slot />
+        <Transition pathname={data.currentPath}>
+            <slot />
+        </Transition>
     </div>
 </div>
+    

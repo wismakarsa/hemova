@@ -1,9 +1,10 @@
 <script>
 	import { page } from '$app/stores';
     import { onMount } from 'svelte'
-    import { fade, fly } from 'svelte/transition'
-	import { slide } from 'svelte/transition';
-  	import { quintOut } from 'svelte/easing';
+    // import { fade, fly } from 'svelte/transition'
+	// import { slide } from 'svelte/transition';
+  	// import { quintOut } from 'svelte/easing';
+	import Transition from '$lib/components/Transition.svelte';
 	import { MetaTags } from 'svelte-meta-tags';
 	import { getImageURL } from '$lib/utils.js';
 	import '../global.css';
@@ -47,6 +48,11 @@
 	}
 
 	
+	console.log('current path ', data.currentPath )
+
+	$: settingsTransition = data.currentPath.includes('my/settings')
+	console.log(settingsTransition)
+
 </script>
 
 <svelte:head>
@@ -61,14 +67,11 @@ description="development website"
 
 
 {#if ready}
-<div class="min-h-full font-poppins">
-	
-	<!-- <Sidebar bind:open/> -->
-	<nav class="navbar bg-base-100 z-[80]">
-	    <!-- <Navbar bind:sidebar={open}/> -->
-		<div class="flex-1" >
+<div class="min-h-full font-poppins {(data.currentPath === '/home') ? 'bg-svg' : ' '}">
+	<nav class="navbar z-[80] ">
+		<div class="flex-1 " >
 			<!--  🔵	conditional class `swap-active` 👇	 -->
-			<label for="my-drawer-3" class:swap-active={isDrawerOpen} class="btn btn-circle swap swap-rotate bg-base-100 border-0 md:hidden">
+			<label for="my-drawer-3" class:swap-active={isDrawerOpen} class="btn btn-circle swap swap-rotate bg-transparent border-0 md:hidden">
 				<svg class="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"/></svg>
 				<svg class="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"/></svg>
 			  </label>
@@ -156,12 +159,22 @@ description="development website"
     </div>
   </div>
   
-	<div class="py-4 mb-20 md:mb-5" >
+	<div class="py-4 mb-20 md:mb-5 " >
 		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			{#if (settingsTransition)}
 			<slot />
+			{:else}
+			<Transition pathname={data.currentPath}>
+				<slot />
+			</Transition>
+			
+			{/if}
+			<!-- <slot /> -->
 		</div>
 	</div>
-	
+	<!-- <div class="absolute">
+		<svg id="visual" viewBox="0 0 900 600" width="600" height="300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><g transform="translate(442.0735900224799 278.8425734591127)"><path d="M148.2 -218.1C193.7 -201.4 233.3 -163 250 -116.9C266.7 -70.9 260.6 -17.2 249.2 33.2C237.9 83.5 221.3 130.5 192.9 172.1C164.5 213.6 124.2 249.8 77.1 264.5C30 279.2 -24 272.5 -68.3 251C-112.5 229.6 -146.9 193.4 -178.6 155.5C-210.3 117.6 -239.3 78.1 -243.8 36.1C-248.3 -6 -228.3 -50.6 -207.6 -94.4C-187 -138.3 -165.7 -181.5 -131 -203.1C-96.2 -224.7 -48.1 -224.9 1.6 -227.4C51.4 -229.9 102.7 -234.8 148.2 -218.1" fill="#F5F9FF"></path></g></svg>
+	</div> -->
 </div>
 
 {/if}
@@ -201,6 +214,13 @@ description="development website"
 	backdrop-filter: blur(2px);
 	-webkit-mask: linear-gradient(0deg, rgba(0,0,0,1) 34%, rgba(255,255,255,0) 93%);
 	mask: linear-gradient(0deg, rgba(0,0,0,1) 20%, rgba(255,255,255,0) 93%);
+}
+
+.bg-svg {
+	background: url('/svg/blob-haikei.svg');
+	background-repeat: no-repeat;
+	background-size: 152%;
+	background-position: 90% -20%;
 }
 
 </style>

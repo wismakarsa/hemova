@@ -31,11 +31,11 @@
 			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" />
 		</div>
 		<div class="form-control w-full max-w-sm sm:max-w-md">
-			<select class="select select-bordered" name="userType" id="userType" >
+			<!-- <select class="select select-bordered" name="userType" id="userType" >
 				<option disabled selected>Login sebagai ?</option>
 				<option value="user">Siswi</option>
 				<option value="admin">Admin</option>
-			  </select>
+			  </select> -->
 		</div>
 		
         <div class="w-full max-w-sm sm:max-w-md text-start">

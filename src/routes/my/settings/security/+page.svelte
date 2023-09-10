@@ -8,7 +8,7 @@
 <div class="flex flex-col w-full h-full">
 	<div class="w-full">
 		<form action="?/updatePassword" method="POST" class="flex flex-col space-y-2 w-full">
-			<h3 class="text-2xl font-medium">Ubah Password</h3>
+			<h3 class="text-2xl font-semibold">Ubah Password</h3>
 			<div class="divider" />
 			<!-- <input type="hidden" name="userType" value={data.userType}> -->
 			<Input id="oldPassword" label="Password Lama" type="password" required />

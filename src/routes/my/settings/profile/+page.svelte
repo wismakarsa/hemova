@@ -51,6 +51,7 @@
     use:enhance={submitUpdateProfile}
     >
         <h3 class="text-2xl font-semibold">Update Profil</h3>
+        <div class="divider mb-0.5"></div>
         <div class="form-control w-full max-w-lg">
             <label for="avatar" class="label font-medium pb-2">
                 <span class="label-text">Profile Picture</span>
