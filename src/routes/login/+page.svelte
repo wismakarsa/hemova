@@ -22,13 +22,13 @@
 			<label for="email" class="label font-medium pb-1">
 				<span class="label-text">Email</span>
 			</label>
-			<input type="email" name="email" class="input input-bordered w-full max-w-sm sm:max-w-md" />
+			<input type="email" name="email"   class="input input-bordered w-full max-w-sm sm:max-w-md" required/>
 		</div>
 		<div class="form-control w-full max-w-sm sm:max-w-md">
 			<label for="password" class="label font-medium pb-1">
 				<span class="label-text">Password</span>
 			</label>
-			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" />
+			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" required/>
 		</div>
 		<div class="form-control w-full max-w-sm sm:max-w-md">
 			<!-- <select class="select select-bordered" name="userType" id="userType" >
