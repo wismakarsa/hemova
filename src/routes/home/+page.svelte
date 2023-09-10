@@ -73,6 +73,21 @@ const aksesCepat = [
         name: 'Games',
         href: '/',
         icon: 'solar:star-fall-bold-duotone'
+    },
+    {
+        name: 'Games',
+        href: '/',
+        icon: 'solar:star-fall-bold-duotone'
+    },
+    {
+        name: 'Games',
+        href: '/',
+        icon: 'solar:star-fall-bold-duotone'
+    },
+    {
+        name: 'Games',
+        href: '/',
+        icon: 'solar:star-fall-bold-duotone'
     }
 ]
 
@@ -120,15 +135,18 @@ console.log(data.user)
 <div >
     <h3 class="font-medium my-2 mx-4" in:fly="{{ y: 10, duration: 800, easing: cubicInOut }}">Akses Cepat</h3>
 
-    <div class="grid grid-cols-8 gap-x-20 sm:gap-x-10 quick-access mx-4">
+    <div class="grid grid-flow-col grid-cols-20 gap-x-3 sm:gap-x-2 quick-access mx-4 h-full no-scrollbar overflow-x-auto pb-10 masked-overflow overscroll-x-contain sm:grid-cols-8">
 
         {#each aksesCepat as itemAkses, i}
-        <div class="w-16 h-16" in:fly|global="{{ y: 70, duration: 1000, easing: cubicInOut, delay: 50 * i }}">
-            <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16 shadow-lg shadow-primary/40 no-animation"  >
-                <iconify-icon icon={itemAkses.icon} width="30"></iconify-icon>
-                
-             </a>
-             <span class="block text-[0.60em] text-center my-2 font-medium">{itemAkses.name}</span>
+        <div class="w-16 h-16 grid grid-row-[min-content]" in:fly|global="{{ y: 30, duration: 1000, easing: cubicInOut, delay: 50 * i }}">
+
+                <a href=/home{itemAkses.href} class="btn btn-lg btn-primary btn-square w-16 h-16 shadow-lg shadow-primary/40 no-animation ml-1"  >
+                    <iconify-icon icon={itemAkses.icon} width="30" class="drop-shadow-lg"></iconify-icon>
+                    
+                 </a>
+                 <p class="block text-[0.60em] text-center my-2 font-medium">{itemAkses.name}</p>
+    
+
         </div>
         {/each}
     </div>
@@ -139,7 +157,7 @@ console.log(data.user)
 
 
 
-<div class="grid-cols-1 sm:grid md:grid-cols-2 ">
+<div class="grid-cols-1 sm:grid md:grid-cols-3 ">
     {#each articles as a, i}
     <a href="#!">
     <div
@@ -168,5 +186,68 @@ console.log(data.user)
 
 
 <style>
+.masked-overflow {
+    /* scroll bar width, for use in mask calculations */
+    --scrollbar-width: 0px;
 
+    /* mask fade distance, for use in mask calculations */
+    --mask-height: 32px;
+
+
+    /* Our height limit */
+    height: max-content;
+
+    /* Need to make sure container has bottom space,
+  otherwise content at the bottom is always faded out */
+    padding-bottom: var(--mask-height);
+
+    /* Keep some space between content and scrollbar */
+
+    /* The CSS mask */
+
+    /* The content mask is a linear gradient from top to bottom */
+    --mask-image-content: linear-gradient(
+        to right,
+        transparent,
+        black calc(10% - 3em),
+        rgb(0, 0, 0) calc(100% - 2em),
+        rgba(0, 0, 0, 0)
+    );
+
+    /* Here we scale the content gradient to the width of the container 
+  minus the scrollbar width. The height is the full container height */
+    --mask-size-content: calc(100% - var(--scrollbar-width)) 100%;
+
+    /* The scrollbar mask is a black pixel */
+    --mask-image-scrollbar: linear-gradient(black, black);
+
+    /* The width of our black pixel is the width of the scrollbar.
+  The height is the full container height */
+    --mask-size-scrollbar: var(--scrollbar-width) 100%;
+
+    /* Apply the mask image and mask size variables */
+    mask-image: var(--mask-image-content), var(--mask-image-scrollbar);
+    mask-size: var(--mask-size-content), var(--mask-size-scrollbar);
+
+    /* Position the content gradient in the top left, and the 
+  scroll gradient in the top right */
+    mask-position: 0 0, 100% 0;
+
+    /* We don't repeat our mask images */
+    mask-repeat: no-repeat, no-repeat;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .masked-overflow {
+    --mask-image-content: linear-gradient(
+        to right,
+        black,
+        black
+
+
+    );
+
+}
+}
 </style>

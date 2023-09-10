@@ -67,7 +67,7 @@ description="development website"
 
 
 {#if ready}
-<div class="min-h-full font-poppins {(data.currentPath === '/home') ? 'bg-svg' : 'no-bg-svg'} scrollbar-hide" >
+<div class="min-h-full font-poppins {(data.currentPath === '/home') ? 'bg-svg' : 'no-bg-svg'} scrollbar-hide sm:bg-base-100" >
 	<nav class="navbar z-[80] ">
 		<div class="flex-1 " >
 			<!--  🔵	conditional class `swap-active` 👇	 -->

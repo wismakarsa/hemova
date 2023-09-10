@@ -5,7 +5,7 @@
     import { page } from '$app/stores'
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-    import { quartIn } from 'svelte/easing';
+    import { cubicIn, quartIn } from 'svelte/easing';
     const navigation = [
         {
             title: 'Profil',
@@ -28,7 +28,7 @@
     })
 </script>
 {#if settingsReady}
-<div in:fly={{ x: -10, duration: 300, dealy: 200, easing: quartIn}} out:fly={{ x: -10, duration: 200, easing: quartIn }}>
+<div in:fly={{ x: -10, duration: 300, dealy: 200, easing: cubicIn}} out:fly={{ x: -10, duration: 100, easing: quartIn }}>
     <div class="w-full h-full px-6 py-2 sm:px-4">
         <div class="grid grid-col">
             <div class="inline-block align-baseline">

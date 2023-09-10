@@ -8,6 +8,27 @@
     }
   }
 
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .scrollbar::-webkit-scrollbar {
+      display: block;
+    }
+
+    .scorllbar {
+      -ms-overflow-style: auto;
+      scrollbar-width: auto;
+    }
+}
+
 .nav {
     padding: 1em;
     margin: 0;
@@ -17,13 +38,3 @@
     --primary: #436acd;
   }
 
-/* For Webkit-based browsers (Chrome, Safari and Opera) */
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* For IE, Edge and Firefox */
-.scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}

@@ -44,14 +44,15 @@
 
 
 <div class="flex flex-col w-full h-full ">
+    <h3 class="text-2xl font-semibold">Update Profil</h3>
+    <div class="divider mb-0.5"></div>
     <form 
     action="?/updateProfile" 
     method="POST" class="flex flex-col space-y-2 w-full" 
     enctype="multipart/form-data"
     use:enhance={submitUpdateProfile}
     >
-        <h3 class="text-2xl font-semibold">Update Profil</h3>
-        <div class="divider mb-0.5"></div>
+
         <div class="form-control w-full max-w-lg">
             <label for="avatar" class="label font-medium pb-2">
                 <span class="label-text">Profile Picture</span>
@@ -62,8 +63,8 @@
                         <iconify-icon icon="mingcute:user-edit-fill" class="text-white"></iconify-icon>
                     </span>
                 </label>
-                <div class="w-32 rounded-full">
-                    <img src={data.user?.avatar ? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar) : `https://ui-avatars.com/api/?name=${data.user?.name}`} alt="User Avatar" id="avatar-preview">
+                <div class="w-32 rounded-full outline outline-2 outline-blue-200 hover:brightness-[0.4] active:brightness-[0.4] transition-all">
+                    <img src={data.user?.avatar ? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar) : `https://ui-avatars.com/api/?name=${data.user?.name}`} alt="User Avatar" id="avatar-preview" >
                 </div>
             </label>
             <input 
