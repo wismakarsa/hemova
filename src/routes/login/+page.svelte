@@ -1,5 +1,47 @@
 <script>
-    export let form
+    // export let form
+	export const prerender = false;
+    export const ssr = false;
+    import { onMount } from 'svelte'
+
+
+	import { currentUser, pb } from "$lib/pocketbase";
+    // import Button from "$lib/Button.svelte";
+
+    let email = ''
+    let password
+    let loading
+	let userTypeRes
+	let emailUks
+
+	if (email.endsWith('@uks.com')) {
+            userTypeRes = 'admins'
+            emailUks = true
+        } else {
+            userTypeRes = 'users'
+            emailUks = false
+        }
+
+
+    async function login() {
+        try {
+            loading = true;
+            await pb.collection(`${userTypeRes}`).authWithPassword(email, password);
+            window.location.assign(`http://${window.location.host}/home`);
+            loading = false;
+        } catch(err){
+            console.error(err);
+            alert(err);
+            pb.cancelAllRequests();
+            loading = false;
+        }
+    }
+
+    function signOut() {
+        pb.authStore.clear();
+    }
+
+
 </script>
 
 
@@ -12,7 +54,7 @@
 			>Daftar</a
 		> jika belum memiliki akun.
 	</p>
-	<form action="?/login" method="POST" class="flex flex-col items-center space-y-2 w-full pt-4 px-6">
+	<form on:submit|preventDefault class="flex flex-col items-center space-y-2 w-full pt-4 px-6">
         <div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
 			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary"><iconify-icon icon="bi:google"></iconify-icon>Masuk dengan Google</button>
 		</div>
@@ -22,13 +64,13 @@
 			<label for="email" class="label font-medium pb-1">
 				<span class="label-text">Email</span>
 			</label>
-			<input type="email" name="email"   class="input input-bordered w-full max-w-sm sm:max-w-md" required/>
+			<input type="email" name="email" bind:value={email} class="input input-bordered w-full max-w-sm sm:max-w-md" required/>
 		</div>
 		<div class="form-control w-full max-w-sm sm:max-w-md">
 			<label for="password" class="label font-medium pb-1">
 				<span class="label-text">Password</span>
 			</label>
-			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" required/>
+			<input type="password" name="password" class="input input-bordered w-full max-w-sm sm:max-w-md" bind:value={password} required/>
 		</div>
 		<div class="form-control w-full max-w-sm sm:max-w-md">
 			<!-- <select class="select select-bordered" name="userType" id="userType" >
@@ -43,7 +85,7 @@
         </div>
 
 		<div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
-			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary">Login</button>
+			<button on:click={login} class="btn btn-primary w-full shadow-sm shadow-primary">Login</button>
 		</div>
         <!-- {#if form?.notVerified}
         <div class="alert alert-error max-w-sm sm:max-w-md">

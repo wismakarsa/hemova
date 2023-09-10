@@ -1,11 +1,14 @@
 <script>
     import Transition from '$lib/components/Transition.svelte';
-
+	import { currentUser, pb } from "$lib/pocketbase";
     export let data
     import { page } from '$app/stores'
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
     import { cubicIn, quartIn } from 'svelte/easing';
+
+
+
     const navigation = [
         {
             title: 'Profil',
@@ -20,6 +23,8 @@
             href: '/my/settings/security'
         }
     ]
+    // console.log(currentUser.pb.authStore.isValid)
+    
 
     let settingsReady = false;
 

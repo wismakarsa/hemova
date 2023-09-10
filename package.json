@@ -54,6 +54,7 @@
 		"@sveltejs/adapter-static": "^2.0.3",
 		"chart.js": "^4.4.0",
 		"iconify-icon": "^1.0.8",
+		"nanoid": "^4.0.2",
 		"pocketbase": "^0.18.0-rc2",
 		"svelte-hamburger": "^1.0.1",
 		"svelte-meta-tags": "^3.0.3"

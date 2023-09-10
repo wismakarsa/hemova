@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
     import { onMount } from 'svelte'
     import { fade } from 'svelte/transition'
+	import { pb, currentUser } from '$lib/pocketbase.js'
 	// import { slide } from 'svelte/transition';
   	// import { quintOut } from 'svelte/easing';
 	import Transition from '$lib/components/Transition.svelte';
@@ -43,10 +44,14 @@
 		}
 	]
 
-	if (data.user){
+	if ($currentUser){
 		homeHref = '/home'
 	}
-
+	function signOut() {
+        pb.authStore.clear();
+		// currentUser = undefined;
+		window.location.assign(`http://${window.location.host}/login`);;
+    }
 	
 	console.log('current path ', data.currentPath )
 
@@ -82,13 +87,13 @@ description="development website"
 				
 		</div>
 		<div class="flex-none">
-			{#if !data.user}
+			{#if !$currentUser}
 				<div class="dropdown dropdown-end">
 					<a href="/login" class="btn btn-secondary">Login</a>
 					<a href="/register" class="btn btn-primary">Daftar</a>
 				</div>
 			{:else}
-				{#if !data.user.verified}
+				{#if !$currentUser.verified}
 					<a href="/verifikasi" class="btn btn-sm text-xs bg-yellow-500 mr-2 sm:btn-xs">
 						<iconify-icon icon="typcn:warning" class="text-xl sm:text-sm"></iconify-icon>
 						<span class="hidden sm:block">			
@@ -108,7 +113,7 @@ description="development website"
 					<!-- svelte-ignore a11y-label-has-associated-control -->
 					<label tabindex="0" class="btn btn-ghost btn-circle avatar">
 						<div class="w-10 rounded-full">		
-							<img src={data.user?.avatar ? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar) : `https://ui-avatars.com/api/?name=${data.user?.name}`}  alt="User avatar" />
+							<img src={$currentUser?.avatar ? getImageURL($currentUser?.collectionId, $currentUser?.id, $currentUser?.avatar) : `https://ui-avatars.com/api/?name=${$currentUser?.name}`}  alt="User avatar" />
 						</div>
 					</label>
 					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
@@ -123,9 +128,9 @@ description="development website"
 						<li><a href="/my/settings">
                             <iconify-icon icon="lucide:settings"></iconify-icon>
                             Settings</a></li>
-					
-							<form action="/logout" method="POST">
-								<button type="submit" class="btn btn-md mt-1 w-full text-start">Logout</button>
+							<br>
+							<form method="POST">
+								<button type="submit" on:click={signOut} class="btn btn-md mt-1 w-full text-start">Logout</button>
 							</form>
 					</ul>
 

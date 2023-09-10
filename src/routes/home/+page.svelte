@@ -1,4 +1,5 @@
 <script>
+    import { pb, currentUser } from '$lib/pocketbase.js'
     import { onMount } from 'svelte'
     import { fly, fade } from 'svelte/transition'
     import { cubicInOut } from 'svelte/easing';
@@ -109,13 +110,15 @@ const articles = [
     }
 ]
 
-if (data.user?.collectionName === 'admins') {
+if ($currentUser?.collectionName === 'admins') {
     userMessage = 'Admin'
 
 }
 
-const frontName = data?.user?.name.split(" ")[0]
-console.log(data.user)
+console.log('valid or nah? ',pb.authStore.isValid)
+
+const frontName = $currentUser?.name.split(" ")[0]
+console.log('current user :', $currentUser)
 
 </script>
 
