@@ -61,7 +61,7 @@ const aksesCepat = [
     },
     {
         name: 'Grafik',
-        href: '/',
+        href: '/articles/4qeroz4raoljgdf',
         icon: 'solar:pills-bold-duotone'
     },
     {
@@ -94,7 +94,7 @@ const aksesCepat = [
 const articles = [
     {
         title: 'Pariatur dolor sint mollit ut irure magna incididunt.',
-        href: '#',
+        href: '/articles/4qeroz4raoljgdf',
         description: 'Commodo duis tempor irure est. Officia est cillum culpa aute anim dolore dolor deserunt fugiat aute elit ea occaecat. Ut amet anim officia esse veniam officia dolore enim proident.'
     },
     {
@@ -159,7 +159,7 @@ console.log(data.user)
 
 <div class="grid-cols-1 sm:grid md:grid-cols-3 ">
     {#each articles as a, i}
-    <a href="#!">
+    <a href={a.href}>
     <div
       class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-100 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}">
       <img

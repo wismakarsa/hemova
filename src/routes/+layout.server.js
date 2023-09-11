@@ -1,13 +1,6 @@
 import { serializeNonPOJOs } from "$lib/utils.js"
-// export async function load({ url }) {
 
-//     return {
-  
-//       currentPath: url.pathname,
-  
-//     };
-  
-//   };
+
 
 export const load = ({ locals, url }) => {
     let userTypeRes = serializeNonPOJOs(locals.user?.collectionName)
@@ -18,13 +11,14 @@ export const load = ({ locals, url }) => {
             currentPath: url.pathname
         }
     };
-    
+
     return {
         user: undefined,
         currentPath: url.pathname
     }
 
 }
+
 
 
 

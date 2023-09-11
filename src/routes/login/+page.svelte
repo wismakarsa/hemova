@@ -1,5 +1,9 @@
 <script>
+	import { enhance } from '$app/forms';
+
     export let form
+
+	let loading
 </script>
 
 
@@ -12,7 +16,14 @@
 			>Daftar</a
 		> jika belum memiliki akun.
 	</p>
-	<form action="?/login" method="POST" class="flex flex-col items-center space-y-2 w-full pt-4 px-6">
+	<form action="?/login" method="POST" class="flex flex-col items-center space-y-2 w-full pt-4 px-6"
+	use:enhance={() => {
+		loading = true;
+		return async ({ update }) => {
+			loading = false;
+			update();
+		};
+	}}>
         <div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
 			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary"><iconify-icon icon="bi:google"></iconify-icon>Masuk dengan Google</button>
 		</div>
@@ -43,7 +54,7 @@
         </div>
 
 		<div class="w-full max-w-sm sm:max-w-md pt-2 my-2">
-			<button type="submit" class="btn btn-primary w-full shadow-sm shadow-primary">Login</button>
+			<button type="submit" class="btn btn-primary w-full" disabled={loading}>Login</button>
 		</div>
         <!-- {#if form?.notVerified}
         <div class="alert alert-error max-w-sm sm:max-w-md">
