@@ -1,4 +1,7 @@
 <script>
+    import { marked } from 'marked';
+    import { generateEmoji } from '$lib/utils.js';
+    import { getImageURL } from '$lib/utils.js';
     import { onMount } from 'svelte'
     import { fly, fade } from 'svelte/transition'
     import { cubicInOut } from 'svelte/easing';
@@ -115,7 +118,7 @@ if (data.user?.collectionName === 'admins') {
 }
 
 const frontName = data?.user?.name.split(" ")[0]
-console.log(data.user)
+console.log(data.article)
 
 </script>
 
@@ -151,21 +154,25 @@ console.log(data.user)
         {/each}
     </div>
 </div>
-{/if}
+{/if} 
+
 <div class="home-feed my-[4em]">
     <h3 class="font-medium mt-2 mx-4" in:fly|global="{{ y: 50, duration: 800, easing: cubicInOut, delay: 80 }}">Artikel</h3>
 
 
 
 <div class="grid-cols-1 sm:grid md:grid-cols-3 ">
-    {#each articles as a, i}
-    <a href={a.href}>
+    {#each data.article as a, i}
+    <a href=/articles/{a.id}>
     <div
-      class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-100 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}">
+      class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-100 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}"> <!--
+      <div class="rounded-t-lg text-center text-3xl py-5 bg-primary">{generateEmoji()}</div> -->
       <img
       class="rounded-t-lg aspect-[8/3]"
-      src="https://placekitten.com/500/188"
-      alt="Hollywood Sign on The Hill" />
+      src={data.article?.thumbnail
+        ? getImageURL(a.collectionId, a.id, a.thumbnail, '480x120')
+        : `https://placehold.co/480x180/436acd/FFF?font=montserrat&text=${a.title}`}
+    alt="article thumbnail" />
       
  
       
@@ -174,18 +181,22 @@ console.log(data.user)
           class="mb-2 text-md font-medium leading-tight text-neutral-800">
           {a.title}
         </h5>
-        <p class="mb-4 text-[0.60em] text-neutral-600">
+        <div class="pvw mb-4 text-[0.60em] text-neutral-600 truncate">
           {a.description}
-        </p>
+        </div>
       </div>
     </div>
 </a>
     {/each}
   </div>
-</div>
+</div> 
 
 
 <style>
+
+
+
+
 .masked-overflow {
     /* scroll bar width, for use in mask calculations */
     --scrollbar-width: 0px;
