@@ -163,19 +163,18 @@ console.log(data.article)
 
 <div class="grid-cols-1 sm:grid md:grid-cols-3 ">
     {#each data.article as a, i}
-    <a href=/articles/{a.id}>
+    <a href=/home/articles/{a.id}>
     <div
       class="mx-3 mt-6 flex flex-col self-start rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] bg-base-100 sm:shrink-0 sm:grow sm:basis-0" in:fly|global="{{ y: 200, duration: 1000, easing: cubicInOut, delay: 100 * i }}"> <!--
       <div class="rounded-t-lg text-center text-3xl py-5 bg-primary">{generateEmoji()}</div> -->
       <img
-      class="rounded-t-lg aspect-[8/3]"
-      src={data.article?.thumbnail
-        ? getImageURL(a.collectionId, a.id, a.thumbnail, '480x120')
+      class="rounded-t-lg aspect-[8/3] object-fill"
+      src={a?.thumbnail
+        ? getImageURL(a.collectionId, a.id, a.thumbnail, '480x120f')
         : `https://placehold.co/480x180/436acd/FFF?font=montserrat&text=${a.title}`}
     alt="article thumbnail" />
       
  
-      
       <div class="p-6">
         <h5
           class="mb-2 text-md font-medium leading-tight text-neutral-800">

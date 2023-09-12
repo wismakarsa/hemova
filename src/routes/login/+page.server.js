@@ -7,14 +7,11 @@ export const actions = {
     login: async ({ request, locals }) => {
         const body = Object.fromEntries(await request.formData());
         let userTypeRes = 'users'
-        let emailUks = false
         
         if (body.email.endsWith('@uks.com')) {
             userTypeRes = 'admins'
-            emailUks = true
         } else {
             userTypeRes = 'users'
-            emailUks = false
         }
 
         try {

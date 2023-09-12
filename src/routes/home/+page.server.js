@@ -4,7 +4,7 @@ import { error } from '@sveltejs/kit';
 export const load = ({ locals, params }) => {
 	const getProject = async (articleId) => {
 		try {
-			const articleRes = serializeNonPOJOs(await locals.pb.collection('articles').getList(1,50));
+			const articleRes = serializeNonPOJOs(await locals.pb.collection('articles').getList(1,50 , {sort: '-created'}));
 			return articleRes.items;
 		} catch (err) {
 			console.log('Error: ', err);

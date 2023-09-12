@@ -21,7 +21,7 @@
 				</label>
 				<textarea name="field" class="textarea textarea-bordered h-48 resize-none" />
 			</div>
-			<Input id="deskripsi" label="Deskripsi" />
+			<Input id="description" label="Deskripsi" />
 			<div class="form-control w-full max-w-lg">
 				<label for="thumbnail" class="label font-medium pb-1">
 					<span class="label-text">Thumbnail</span>

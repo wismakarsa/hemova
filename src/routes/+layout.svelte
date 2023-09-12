@@ -24,34 +24,63 @@
 
 	let iconMenu = [
 		{
+			id: 1,
 			name: 'menu',
 			href: '/home',
 			iconSize: '30',
 			icon: 'solar:home-smile-bold'
 		},
 		{
+			id: 2,
 			name: 'plus',
 			href: '#tambah-darah',
 			iconSize: '30',
 			icon: 'solar:add-circle-bold'
 		},
 		{
+			id: 3,
 			name: 'profil',
 			href: '/my/settings/profile',
 			iconSize: '24',
 			icon: 'fa-solid:user'
 		}
-	]
+	];
+	
+	const hrefAdmin= {
+
+		id: 2,
+		name: 'plus',
+		href: '/home/articles/new',
+		iconSize: '30',
+		icon: 'solar:add-circle-bold'
+
+	}
+	const iconMenuAdmins = [...iconMenu];
+	const targetIcon = iconMenu.findIndex(f => f.id === 2)
+
+	if (data.userType === 'admins') {
+		iconMenu[targetIcon] = hrefAdmin
+	}
+
+
+
+	console.log(iconMenu)
 
 	if (data.user){
 		homeHref = '/home'
 	}
 
-	
-	console.log('current path ', data.currentPath )
+
+	// if (data.userType === 'admins') {
+	// 	const newState = iconMenu.map(obj =>
+    // 	obj.id === "1" ? { ...obj, href: '/articles/new' } : obj
+	// );
+	// 	console.log('newstate', newState)
+	// }
+
+	// console.log('current path ', data.currentPath )
 
 	$: settingsTransition = data.currentPath.includes('my/settings')
-	console.log(settingsTransition)
 
 </script>
 
@@ -99,20 +128,22 @@ description="development website"
 					</span>
 					</a>
 				{/if}
-				<a href="#" class="btn btn-sm btn-circle bg-base-100 border-0 mx-1">
+				<a href="/home/notifications" class="btn btn-sm btn-circle bg-base-100 border-0 mx-1">
 					<iconify-icon icon="solar:bell-bold" class="text-xl"></iconify-icon>
 				</a>
 					
 				<div class="dropdown dropdown-end">
 					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 					<!-- svelte-ignore a11y-label-has-associated-control -->
+					<a href="/my/settings/profile">
 					<label tabindex="0" class="btn btn-ghost btn-circle avatar">
 						<div class="w-10 rounded-full">		
 							<img src={data.user?.avatar ? getImageURL(data.user?.collectionId, data.user?.id, data.user?.avatar) : `https://ui-avatars.com/api/?name=${data.user?.name}`}  alt="User avatar" />
 						</div>
 					</label>
+					</a>
 					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-					<ul
+					<!-- <ul
 						tabindex="0"
 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 					>
@@ -127,7 +158,7 @@ description="development website"
 							<form action="/logout" method="POST">
 								<button type="submit" class="btn btn-md mt-1 w-full text-start">Logout</button>
 							</form>
-					</ul>
+					</ul> -->
 
 				</div>
 				<!-- Bottom Nav Bar -->
