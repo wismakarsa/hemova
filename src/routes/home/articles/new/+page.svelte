@@ -1,10 +1,22 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { Input } from '$lib/components';
+	import TipTap from '$lib/components/TipTap.svelte'
+	import { onMount, onDestroy } from 'svelte'
+	import { writable } from 'svelte/store';
+
+    let content
+
+	// onMount(() => {
+	// 	content = content
+	// })
+		
+
 </script>
 
-<div class="flex flex-col w-full h-full p-2">
+<div class="flex flex-col w-full h-full p-2 select-auto">
 	<div class="w-full">
+		
 		<form
 			action="?/create"
 			method="POST"
@@ -19,9 +31,13 @@
 				<label for="field" class="label font-medium pb-1">
 					<span class="label-text">Isi deskripsi</span>
 				</label>
-				<textarea name="field" class="textarea textarea-bordered h-48 resize-none" />
+				<div class="my-2">
+					<TipTap bind:content={content} />
+				</div>
+				<textarea class="border border-1 border-black" name="field" bind:value={content} />
+
 			</div>
-			<Input id="description" label="Deskripsi" />
+			<Input id="description" label="Deskripsi Pendek" />
 			<div class="form-control w-full max-w-lg">
 				<label for="thumbnail" class="label font-medium pb-1">
 					<span class="label-text">Thumbnail</span>
@@ -37,5 +53,18 @@
 				<button type="submit" class="btn btn-primary w-full max-w-lg">Upload Artikel</button>
 			</div>
 		</form>
+		
 	</div>
 </div>
+
+
+<style>
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #adb5bd;
+  pointer-events: none;
+  height: 0;
+}
+
+</style>
