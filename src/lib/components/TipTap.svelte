@@ -48,7 +48,7 @@
       <div name="field" class="element-wrapper max-w-full textarea textarea-bordered h-48 resize-none rounded-t-none" bind:this={element}/>
   </div>
   <br>
-  {#if editor}
+  <!-- {#if editor}
   <pre class="json-output">
       {JSON.stringify(editor.getJSON(), null, 2)}
   </pre>
@@ -57,11 +57,9 @@
       {editor.getHTML()}
   </div>
   <br>
-  <!-- <div class="store-output border border-1 border-black">
-      {@html ($contentStore)}
-  </div> -->
+
   {/if}
-  
+   -->
   <style>
 
       .element-wrapper {
