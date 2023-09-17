@@ -3,6 +3,7 @@
 	import { Input } from '$lib/components';
 	import TipTap from '$lib/components/TipTap.svelte'
 	import { onMount, onDestroy } from 'svelte'
+	import { writable } from 'svelte/store';
 
     let content
 
@@ -31,12 +32,12 @@
 					<span class="label-text">Isi deskripsi</span>
 				</label>
 				<div class="my-2">
-					<TipTap {content} />
+					<TipTap bind:content={content} />
 				</div>
-				<textarea name="field" bind:value={content} />
+				<textarea class="border border-1 border-black" name="field" bind:value={content} />
 
 			</div>
-			<Input id="description" label="Deskripsi" />
+			<Input id="description" label="Deskripsi Pendek" />
 			<div class="form-control w-full max-w-lg">
 				<label for="thumbnail" class="label font-medium pb-1">
 					<span class="label-text">Thumbnail</span>

@@ -1,56 +1,45 @@
 <script>
     import { onMount, onDestroy } from 'svelte';
-      import { writable } from 'svelte/store';
-      import { Editor } from '@tiptap/core';
-      import StarterKit from '@tiptap/starter-kit';
-      import Placeholder from '@tiptap/extension-placeholder'
-      import FixedMenu from './FixedMenu.svelte';
-      import contentRes from './contentRes.js'
-      
-      export let content
-      
-      export const contentStore = writable(content);
+    import { writable } from 'svelte/store';
+    import { Editor } from '@tiptap/core';
+    import StarterKit from '@tiptap/starter-kit';
+    import Placeholder from '@tiptap/extension-placeholder'
+    import FixedMenu from './FixedMenu.svelte';
+    // import contentRes from './contentRes.js'
     
+    export let content
     
-      let element;
-      let editor;
-      let bubbleMenu;
-  
-      onMount(() => {
-      editor = new Editor({
-        element,
-              extensions: [
-                
-              StarterKit,
-                Placeholder.configure({
-                placeholder: 'Tulis sesuatu 🤔💭 ... ',
-                // Use different placeholders depending on the node type:
-                // placeholder: ({ node }) => {
-                //   if (node.type.name === 'heading') {
-                //     return 'What’s the title?'
-                //   }
+    export const contentStore = writable(content);
 
-                //   return 'Can you add some further context?'
-                // },
-          }),
-        ],
-              
-              content,
-              onTransaction: () => {
-                  editor = editor;
-              },
-          });
-          editor.on('update', ({ editor }) => {
-              console.log('L', editor.getHTML());
-              contentStore.set(editor.getHTML());
-              contentRes.set(editor.getHTML())
-              console.log('RES', contentRes)
-          });
-      });
-  
-      onDestroy(() => {
-            editor.destroy();
-      });
+
+    let element;
+    let editor;
+    let bubbleMenu;
+
+    onMount(() => {
+    editor = new Editor({
+    element,
+            extensions: [
+            
+            StarterKit,
+            Placeholder.configure({
+            placeholder: 'Tulis sesuatu 🤔💭 ... ',
+        }),
+    ], 
+            content,
+            onTransaction: () => {
+                editor = editor;
+            },
+        });
+        editor.on('update', ({ editor }) => {
+            console.log('L', editor.getHTML());
+            content = editor.getHTML();                    
+        });
+    });
+
+    onDestroy(() => {
+        editor.destroy();
+    });
   </script>
   
   <div class="wrapper max-w-full w-[100%]">
