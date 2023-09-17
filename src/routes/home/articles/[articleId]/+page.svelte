@@ -48,24 +48,31 @@
 	<h1 class="text-xl sm:text-3xl font-bold mt-4">
 		{data.article.title}
 	</h1>
-	<div class="about flex flex-col items-center text-[0.65em] text-gray-700 mt-1 ">
+	<div class="about text-[0.65em] text-gray-700 mt-1">
 
 			
 		<span class="inline-block">
 			{dateFormat(data.article.created)}
 		</span>
 		<br>
-		<div class="avatar">
-			<div class="w-[1.2em] rounded-xl mr-1">
-				<img src={data.article?.expand.author.avatar ? getImageURL(data.article?.expand.author.collectionId, data.article?.expand.author.id, data.article?.expand.author.avatar) : `https://ui-avatars.com/api/?name=${data.article?.expand.author.name}`}  alt="User avatar" />
+		
+			<div class="flex justify-start align-center gap-1 author-article mt-2 pb-0">
+				<div class="avatar py-[0.1em]">
+					<div class="w-[2em] rounded-full ">
+						<img src={data.article?.expand.author.avatar ? getImageURL(data.article?.expand.author.collectionId, data.article?.expand.author.id, data.article?.expand.author.avatar) : `https://ui-avatars.com/api/?name=${data.article?.expand.author.name}`}  alt="User avatar" />
+						
+					</div>
+				</div>
+				<span class="text-[1em] font-semibold flex flex-row align-center items-center  gap-1 bg-primary px-2 pl-[0.8em] rounded-full text-white">
+					 {data.article.expand.author.name}
+					<iconify-icon icon="ri:verified-badge-fill" class="justify-self-start"></iconify-icon>
+				</span>
+				
 			</div>
-		</div>
-		<span class="font-semibold block ">
-			{data.article.expand.author.name}
-		</span>
+		
 
 	</div>
-	<div class="divider"></div>
+	<div class="divider mt-3"></div>
 	<!-- <p class="text-2xl font-light mt-2">{data.article}</p> -->
 	<div class="preview min-h-fulll min-w-full py-4 text-sm">{@html marked(`${data.article.field}`)}</div>
 
