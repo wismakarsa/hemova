@@ -49,7 +49,7 @@
 				<div class="wrapper-editor my-2">
 					<TipTap bind:content={content} />
 				</div>
-				<textarea class="h-0" name="field" bind:value={content} id="field" required />
+				<textarea class="h-0" name="field" bind:value={content} id="field" required hidden/>
 
 			</div>
 			<Input id="description" label="Deskripsi Pendek" />

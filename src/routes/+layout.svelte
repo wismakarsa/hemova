@@ -13,6 +13,8 @@
 
 	let ready = false;
 
+	$: userType = data.userType
+
 	onMount(() => {
 		ready = true;
 	})
@@ -58,6 +60,8 @@
 	const iconMenuAdmins = [...iconMenu];
 	const targetIcon = iconMenu.findIndex(f => f.id === 2)
 
+	
+
 	if (data.userType === 'admins') {
 		iconMenu[targetIcon] = hrefAdmin
 	}
@@ -71,7 +75,7 @@
 	}
 
 
-	// if (data.userType === 'admins') {
+	// if (userType === 'admins') {
 	// 	const newState = iconMenu.map(obj =>
     // 	obj.id === "1" ? { ...obj, href: '/articles/new' } : obj
 	// );

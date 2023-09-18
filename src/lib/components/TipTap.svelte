@@ -25,7 +25,12 @@
             Placeholder.configure({
             placeholder: 'Tulis sesuatu 🤔💭 ... ',
         }),
-    ], 
+    ],
+    editorProps: {
+        attributes: {
+          class: 'prose prose-sm sm:prose lg:prose-sm xl:prose-sm mx-auto focus:outline-none',
+        },
+      }, 
             content,
             onTransaction: () => {
                 editor = editor;
