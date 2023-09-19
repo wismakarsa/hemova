@@ -13,7 +13,26 @@
 
     $: usernameModalOpen = false
     $: emailModalOpen = false
+    $: logoutModalOpen = false
     $: loading = false
+
+    const submitLogout = () => {
+        loading = true;
+        logoutModalOpen = true;
+        return async ({ result }) => {
+			switch (result.type) {
+				case 'success':
+					await invalidateAll();
+					logoutModalOpen = false;
+					break;
+				case 'error':
+					break;
+				default:
+					await applyAction(result);
+			}
+			loading = false;
+		};
+    }
 
     const submitUpdateEmail = () => {
 		loading = true;
@@ -99,6 +118,13 @@
     
                 </form>
     
+            </Modal>
+            <Modal label="change-password" checked={logoutModalOpen}>
+                <span slot="trigger" class="btn btn-md btn-outline btn-error mt-1 w-full text-start">Logout</span>
+                <h3 slot="heading">🚪 Yakin Keluar dari akun?</h3>
+                <form action="/logout" method="POST" class="mt-2" se:enhance={submitLogout}>
+                    <button type="submit" class="btn btn-md btn-outline btn-error mt-1 w-full text-start">Yakin, Logout aja 🤪</button>
+                </form>
             </Modal>
         
     </div>
